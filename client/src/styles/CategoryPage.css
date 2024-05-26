@@ -1,0 +1,16 @@
+.heading-div{
+    padding-left: 30px;
+}
+
+.product-div{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media (max-width:768px) {
+    .product-div{
+        align-items: center;
+        justify-content: center;
+    }
+    
+}

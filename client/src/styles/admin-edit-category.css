@@ -1,0 +1,10 @@
+.no-products {
+  background-color: #ebeff2;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.heading {
+  color: #a3a3a3;
+}

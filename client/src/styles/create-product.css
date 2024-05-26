@@ -1,0 +1,41 @@
+.image-uploader {
+  width: 100%;
+  border: 5px dashed #a3a3a3;
+  border-radius: 5px;
+  background-color: #e5e5e5;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.image-uploader-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.image-uploader-text {
+  margin-top:10px;
+  margin-bottom: 6px;
+  color: #5a5a5a;
+  font-size: 2vw;
+}
+
+.image-uploader-subtext {
+  color:#5a5a5a
+}
+
+.quantity-price-div{
+  display: flex;
+  justify-content: space-between  ;
+  align-items: center;
+}
+
+.width-48{
+  width: 48%;
+}
