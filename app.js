@@ -30,10 +30,6 @@ app.use("/api/v1/product",productRouter);
 app.use("/api/v1/banner",bannerRouter)
 
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
-
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
