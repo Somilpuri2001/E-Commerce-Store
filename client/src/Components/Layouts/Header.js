@@ -78,7 +78,7 @@ function Header() {
               ) : (
                 <>
                   <li className="nav-item dropdown">
-                    <NavLink
+                    <Link
                       to=""
                       className="nav-link dropdown-toggle"
                       role="button"
@@ -86,7 +86,7 @@ function Header() {
                       aria-expanded="false"
                     >
                       My Account
-                    </NavLink>
+                    </Link>
                     <ul className="dropdown-menu">
                       <li
                         className="dropdown-item"
