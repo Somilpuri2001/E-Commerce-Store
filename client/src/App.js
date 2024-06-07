@@ -39,7 +39,7 @@ function App() {
         <Route path="/resetpassword/:id/:token" element={<Resetpassword />} />
         <Route path="/forgot-password" element={<Forgotpassword />} />
         <Route path="/category/:id/:slug" element={<CategoryPage/>} />
-        <Route path="/product/:id/:slug" element={<SingleProductPage/>} />
+        <Route path="/product/:pid/:slug" element={<SingleProductPage/>} />
 
         <Route path="/dashboard" element={<PrivateRoute />}>
           <Route path="user" element={<Dashboard />} />

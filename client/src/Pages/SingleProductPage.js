@@ -10,8 +10,10 @@ const SingleProductPage = () => {
   const [value, setValue] = useState(1);
   const [disableDec, setDisableDec] = useState(false);
   const [disableInc, setDisableInc] = useState(false);
+  const [relatedProducts, setRealatedProducts] = useState([]);
 
-  const { id } = useParams();
+
+  const { pid } = useParams();
   const { slug } = useParams();
 
   const getProduct = async () => {
@@ -23,6 +25,8 @@ const SingleProductPage = () => {
       if (data?.success) {
         setProduct(data.product);
       }
+
+      getSimilarProduct(data?.product._id,data?.product.category._id)
     } catch (error) {
       console.log(`Error while fetching product:-> Error Message: ${error}`);
       toast.error("Something went wrong");
@@ -45,7 +49,16 @@ const SingleProductPage = () => {
 
   const decrement = () => {
     setValue(value - 1);
-  };
+    };
+
+  const getSimilarProduct = async(pid,cid) =>{
+    try {
+      const {data} = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/similar-products/${pid}/${cid}`)
+      setRealatedProducts(data?.products);
+    } catch (error) {
+      
+    }
+  }
 
   return (
     <Layout>
@@ -54,7 +67,7 @@ const SingleProductPage = () => {
           <>
             <div className="image-div">
               <img
-                src={`${process.env.REACT_APP_API}/api/v1/product/product-image/${id}`}
+                src={`${process.env.REACT_APP_API}/api/v1/product/product-image/${pid}`}
                 alt={slug}
                 className="product-image"
               />
@@ -99,7 +112,10 @@ const SingleProductPage = () => {
           <></>
         )}
       </div>
-      <div className="row container">Similar Products</div>
+      <div className="row similarProductDiv">
+        <h1 className="text-center">Similar Products</h1>
+        {JSON.stringify(relatedProducts,null,4)}
+      </div>
     </Layout>
   );
 };
