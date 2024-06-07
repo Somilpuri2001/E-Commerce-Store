@@ -5,7 +5,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import ProductCardHome from "../Components/Layouts/ProductsCardHome";
 import { Link } from "react-router-dom";
-import styles from "../styles/Homepage.module.css"; // Import the CSS module
+import styles from "../styles/Homepage.module.css";
+import { useCart } from "../context/cart";
 
 const Homepage = () => {
   const [alt1, setAlt1] = useState();
@@ -14,6 +15,7 @@ const Homepage = () => {
   const [alt4, setAlt4] = useState();
   const [products, setProducts] = useState();
   const [category, setCategory] = useState([]);
+  const [cart, setCart] = useCart();
 
   const getBannerAlternateText = async () => {
     try {
@@ -78,7 +80,7 @@ const Homepage = () => {
   useEffect(() => {
     getCategory();
   }, []);
-  console.log(products);
+
   return (
     <Layout title={"Homepage - Ecommerce App"}>
       <CarouselComponent
@@ -121,11 +123,11 @@ const Homepage = () => {
         <div className={styles.productDiv}>
           {products ? (
             products.map((p) => (
-              <Link
-                to={`/product/${p._id}/${p.slug}`}
-                className={styles.homepageLink}
-                key={p._id}
-              >
+              // <Link
+              //   to={`/product/${p._id}/${p.slug}`}
+              //   className={styles.homepageLink}
+              //   key={p._id}
+              // >
                 <ProductCardHome
                   id={p._id}
                   image={`${process.env.REACT_APP_API}/api/v1/product/product-image/${p._id}`}
@@ -135,8 +137,12 @@ const Homepage = () => {
                   price={`Rs.${p.price}/-`}
                   btn1={"More Detail"}
                   btn2={"Add to Cart"}
+                  onclick2={() => {
+                    setCart(...cart, p);
+                    toast.success("Product Added To Cart");
+                  }}
                 />
-              </Link>
+              // </Link>
             ))
           ) : (
             <></>

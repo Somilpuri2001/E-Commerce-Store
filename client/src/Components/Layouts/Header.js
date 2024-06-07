@@ -3,9 +3,11 @@ import { NavLink, Link } from "react-router-dom";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { useAuth } from "../../context/auth";
 import useCategory from "../../hooks/useCategory"
+import { useCart } from "../../context/cart";
 
 function Header() {
   const [auth, setAuth] = useAuth();
+  const [cart,setCart] = useCart([]);
   const categories = useCategory();
   const handleLogout = () => {
     setAuth({
@@ -15,6 +17,9 @@ function Header() {
     });
     localStorage.removeItem("auth");
   };
+
+  console.log(cart)
+  console.log(cart?.length)
 
   return (
     <>
@@ -124,7 +129,7 @@ function Header() {
               )}
               <li className="nav-item">
                 <NavLink to="/cart" className="nav-link">
-                  Cart(0)
+                  Cart {cart?.length}
                 </NavLink>
               </li>
             </ul>

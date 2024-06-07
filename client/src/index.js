@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/auth";
+import {CartProvider} from "./context/cart"
 import ScrollToTop from "./Components/ScrollToTop";
 import "./index.css";
 
@@ -12,9 +13,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <AuthProvider>
     <BrowserRouter>
+    <CartProvider>
       <ScrollToTop>
         <App />
       </ScrollToTop>
+      </CartProvider>
     </BrowserRouter>
   </AuthProvider>
 );

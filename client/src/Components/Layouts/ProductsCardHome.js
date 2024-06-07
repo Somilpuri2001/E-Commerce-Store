@@ -46,8 +46,8 @@ const ProductCardHome = (props) => {
           >
             {props.link2}
           </Link>
-          <button type="button" className={`btn btn-primary ${styles.btnText}`}>{props.btn1}</button>
-          <button type="button" className={`btn btn-secondary ${styles.btnText}`}>{props.btn2}</button>
+          <button type="button" className={`btn btn-primary ${styles.btnText}`} onClick={props.onclick1}>{props.btn1}</button>
+          <button type="button" className={`btn btn-secondary ${styles.btnText}`} onClick={props.onclick2}>{props.btn2}</button>
         </CardActions>
       </CardActionArea>
     </Card>
