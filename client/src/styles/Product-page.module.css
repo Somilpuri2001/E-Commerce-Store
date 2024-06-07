@@ -1,0 +1,127 @@
+
+.mainContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+
+.imageDiv {
+  width: 500px;
+  margin: auto;
+}
+
+.productDetailDiv {
+  width: 500px;
+  margin: auto;
+}
+
+.productImage {
+  height: 100%;
+  width: 100%;
+  max-width: 500px; /* Limit image width */
+  margin-left: 0;
+}
+
+.quantityDiv {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.qtyDisplay {
+  width: 60px;
+  text-align: center;
+  padding: 5px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  border-right: none;
+  height: 52px;
+  box-sizing: border-box;
+  margin-left: 5px;
+}
+
+.btnDiv {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.btnInc,
+.btnDec {
+  width: 40px;
+  height: 26px;
+  border: 1px solid #ccc;
+  background-color: #f8f9fa;
+  color: #000;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.btnInc {
+  border-radius: 0 4px 0 0;
+  border-bottom: none;
+}
+
+.btnDec {
+  border-radius: 0 0 4px 0;
+  border-top: none;
+}
+
+.btnInc:disabled,
+.btnDec:disabled {
+  cursor: not-allowed;
+  background-color: #e9ecef;
+  color: #6c757d;
+}
+
+.btnInc:hover:not(:disabled),
+.btnDec:hover:not(:disabled) {
+  background-color: #e2e6ea;
+}
+
+.addToCart {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  display: block;
+  height: 52px;
+  margin-left: 15px;
+}
+
+.addToCart:hover {
+  background-color: #218838;
+}
+
+.similarProductDiv {
+  width: 100%;
+  margin: auto;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.homepageLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.relatedProductDiv {
+  margin: 20px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}

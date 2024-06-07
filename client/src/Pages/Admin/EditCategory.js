@@ -4,7 +4,7 @@ import AdminMenu from "../../Components/Layouts/AdminMenu";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import "../../styles/admin-edit-category.css";
+import styles from "../../styles/admin-edit-category.module.css";
 import { useNavigate } from "react-router-dom";
 import MultiUtilForm from "../../Components/Form/MultiUtilForm";
 import { Button } from "@mui/material";
@@ -15,8 +15,8 @@ const EditCategory = () => {
   const { id } = useParams();
   const [category, setCategory] = useState([]);
   const [products, setProducts] = useState([]);
-  const [name,setName] = useState("");
-  const [image,setImage] = useState("");
+  const [name, setName] = useState("");
+  const [image, setImage] = useState("");
   const [tempImage, setTempImage] = useState("");
 
   var count = 0;
@@ -61,18 +61,19 @@ const EditCategory = () => {
     try {
       const categoryData = new FormData();
 
-      categoryData.append('name',name);
-      tempImage && categoryData.append('image',tempImage);
+      categoryData.append("name", name);
+      tempImage && categoryData.append("image", tempImage);
 
       const res = await axios.put(
-        `${process.env.REACT_APP_API}/api/v1/category/update-category/${id}`,categoryData
+        `${process.env.REACT_APP_API}/api/v1/category/update-category/${id}`,
+        categoryData
       );
-      if(res.data.success){
-        toast.success("Category Updated Successfully")
+      if (res.data.success) {
+        toast.success("Category Updated Successfully");
       }
     } catch (error) {
       console.log(`Error while updating category:-> Error Message: ${error}`);
-      toast.error('Something went wrong')
+      toast.error("Something went wrong");
     }
   };
 
@@ -124,7 +125,6 @@ const EditCategory = () => {
     }
   };
 
-
   useEffect(() => {
     if (id) {
       getImage();
@@ -142,54 +142,54 @@ const EditCategory = () => {
           <div className="col-md-9">
             <div className="card w-100 p-3">
               <h1>Edit Category:{category.name}</h1>
-            
-            <div className="m-3 w-75">
-            <label className="image-uploader mb-4">
-                <div className="image-uploader-div">
-                  {image ? (
-                    <>
-                      {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-                      <img
-                        src={image}
-                        alt="product-image"
-                        height={"200px"}
-                        className="img img-responsive mt-3"
-                      />
-                      <p className="image-uploader-text">{image.name}</p>
-                      <Button
-                        variant="contained"
-                        className="mt-3 mb-3"
-                        onClick={(e) => removeImage(e)}
-                        startIcon={<DeleteIcon />}
-                      >
-                        Remove Image
-                      </Button>
-                    </>
-                  ) : (
-                    <>
-                      <p className="image-uploader-text">Upload Image</p>
-                      <p className="image-uploader-subtext">
-                        Maximum upload 500 x 500 and 5MB
-                      </p>
-                    </>
-                  )}
-                  <input
-                    type="file"
-                    name="image"
-                    accept="image/*"
-                    onChange={handleImageChange}
-                    hidden
-                  ></input>
-                </div>
-              </label>
 
-              <MultiUtilForm
-                handleSubmit={handleSubmit}
-                value={name}
-                setValue={setName}
-                placeholder={"Enter new name"}
-              />
-            </div>
+              <div className="m-3 w-75">
+                <label className="image-uploader mb-4">
+                  <div className="image-uploader-div">
+                    {image ? (
+                      <>
+                        {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
+                        <img
+                          src={image}
+                          alt="product-image"
+                          height={"200px"}
+                          className="img img-responsive mt-3"
+                        />
+                        <p className="image-uploader-text">{image.name}</p>
+                        <Button
+                          variant="contained"
+                          className="mt-3 mb-3"
+                          onClick={(e) => removeImage(e)}
+                          startIcon={<DeleteIcon />}
+                        >
+                          Remove Image
+                        </Button>
+                      </>
+                    ) : (
+                      <>
+                        <p className="image-uploader-text">Upload Image</p>
+                        <p className="image-uploader-subtext">
+                          Maximum upload 500 x 500 and 5MB
+                        </p>
+                      </>
+                    )}
+                    <input
+                      type="file"
+                      name="image"
+                      accept="image/*"
+                      onChange={handleImageChange}
+                      hidden
+                    ></input>
+                  </div>
+                </label>
+
+                <MultiUtilForm
+                  handleSubmit={handleSubmit}
+                  value={name}
+                  setValue={setName}
+                  placeholder={"Enter new name"}
+                />
+              </div>
             </div>
             <div className="mt-5">
               {products.length > 0 ? (
@@ -226,8 +226,8 @@ const EditCategory = () => {
                 </>
               ) : (
                 <>
-                  <div className="no-products">
-                    <h1 className="heading">No Products Found</h1>
+                  <div className={styles.noProducts}>
+                    <h1 className={styles.heading}>No Products Found</h1>
                   </div>
                 </>
               )}

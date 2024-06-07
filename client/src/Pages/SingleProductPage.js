@@ -1,9 +1,10 @@
-import { React, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../Components/Layouts/Layout";
 import { toast } from "react-toastify";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import "../styles/Product-page.css";
+import styles from "../styles/Product-page.module.css";
+import ProductCardHome from "../Components/Layouts/ProductsCardHome";
 
 const SingleProductPage = () => {
   const [product, setProduct] = useState(null);
@@ -11,7 +12,6 @@ const SingleProductPage = () => {
   const [disableDec, setDisableDec] = useState(false);
   const [disableInc, setDisableInc] = useState(false);
   const [relatedProducts, setRealatedProducts] = useState([]);
-
 
   const { pid } = useParams();
   const { slug } = useParams();
@@ -26,7 +26,7 @@ const SingleProductPage = () => {
         setProduct(data.product);
       }
 
-      getSimilarProduct(data?.product._id,data?.product.category._id)
+      getSimilarProduct(data?.product._id, data?.product.category._id);
     } catch (error) {
       console.log(`Error while fetching product:-> Error Message: ${error}`);
       toast.error("Something went wrong");
@@ -35,7 +35,7 @@ const SingleProductPage = () => {
 
   useEffect(() => {
     getProduct();
-    //eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -49,62 +49,61 @@ const SingleProductPage = () => {
 
   const decrement = () => {
     setValue(value - 1);
-    };
+  };
 
-  const getSimilarProduct = async(pid,cid) =>{
+  const getSimilarProduct = async (pid, cid) => {
     try {
-      const {data} = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/similar-products/${pid}/${cid}`)
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API}/api/v1/product/similar-products/${pid}/${cid}`
+      );
       setRealatedProducts(data?.products);
     } catch (error) {
-      
+      console.log(`Error while fetching similar products: ${error}`);
     }
-  }
+  };
 
   return (
     <Layout>
-      <div className="row mt-5 container main-container">
+      <div className={`row mt-5 container ${styles.mainContainer}`}>
         {product ? (
           <>
-            <div className="image-div">
+            <div className={styles.imageDiv}>
               <img
                 src={`${process.env.REACT_APP_API}/api/v1/product/product-image/${pid}`}
                 alt={slug}
-                className="product-image"
+                className={styles.productImage}
               />
-           </div>
-            <div className="product-detail-div">
+            </div>
+            <div className={styles.productDetailDiv}>
               <h1>{product.name}</h1>
               <h2>Category: {product.category.name}</h2>
               <h3>Description: {product.description}</h3>
               <h4>₹{product.price}</h4>
 
-              <div className="quantity-div">
-
+              <div className={styles.quantityDiv}>
                 <input
                   type="text"
                   disabled
                   value={value}
-                  className="qtyDisplay"
+                  className={styles.qtyDisplay}
                 ></input>
-                <div className="btn-div">
+                <div className={styles.btnDiv}>
                   <button
                     onClick={increment}
                     disabled={disableInc}
-                    className="btnInc"
+                    className={styles.btnInc}
                   >
-                    {" "}
-                    +{" "}
+                    +
                   </button>
                   <button
                     onClick={decrement}
                     disabled={disableDec}
-                    className="btnDec"
+                    className={styles.btnDec}
                   >
-                    {" "}
-                    -{" "}
+                    -
                   </button>
                 </div>
-              <button className="add-to-cart">Add To Cart</button>
+                <button className={styles.addToCart}>Add To Cart</button>
               </div>
             </div>
           </>
@@ -112,9 +111,32 @@ const SingleProductPage = () => {
           <></>
         )}
       </div>
-      <div className="row similarProductDiv">
+      <div className={`row ${styles.similarProductDiv}`}>
         <h1 className="text-center">Similar Products</h1>
-        {JSON.stringify(relatedProducts,null,4)}
+        <div className={styles.relatedProductDiv}>
+          {relatedProducts ? (
+            relatedProducts.map((p) => (
+              <Link
+                to={`/product/${p._id}/${p.slug}`}
+                className={styles.homepageLink}
+                key={p._id}
+              >
+                <ProductCardHome
+                  id={p._id}
+                  image={`${process.env.REACT_APP_API}/api/v1/product/product-image/${p._id}`}
+                  alt={p.alt}
+                  title={p.name}
+                  name={p.name}
+                  price={`Rs.${p.price}/-`}
+                  btn1={"More Detail"}
+                  btn2={"Add to Cart"}
+                />
+              </Link>
+            ))
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
     </Layout>
   );

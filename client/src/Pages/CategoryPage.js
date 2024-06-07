@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import Layout from '../Components/Layouts/Layout'
-import { useParams } from 'react-router-dom'
-import "../styles/CategoryPage.css"
+import { Link, useParams } from 'react-router-dom'
+import  styles from "../styles/CategoryPage.module.css"
 import ProductCardHome from '../Components/Layouts/ProductsCardHome'
 import { toast } from 'react-toastify'
 import axios from 'axios'
@@ -53,13 +53,14 @@ const CategoryPage = () => {
   return (
     <Layout>
     <div className='row mt-3 w-100'>
-    <div className='heading-div w-100'>
+    <div className={`${styles.headingDiv} w-100`}>
     <h1>{name}</h1>
     </div>
-    <div className='product-div'>
+    <div className={`${styles.productDiv}`}>
     {products ? (
             products.map((p) => (
               
+              <Link to={`/product/${p._id}/${p.slug}`} className={styles.homepageLink}>
               <ProductCardHome
                 id={p._id}
                 image={`${process.env.REACT_APP_API}/api/v1/product/product-image/${p._id}`}
@@ -70,6 +71,7 @@ const CategoryPage = () => {
                 btn1={"More Detail"}
                 btn2={"Add to Cart"}
               />
+              </Link>
             ))
           ) : (
             <></>

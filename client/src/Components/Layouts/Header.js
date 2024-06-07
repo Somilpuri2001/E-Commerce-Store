@@ -2,9 +2,11 @@ import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { useAuth } from "../../context/auth";
+import useCategory from "../../hooks/useCategory"
 
 function Header() {
   const [auth, setAuth] = useAuth();
+  const categories = useCategory();
   const handleLogout = () => {
     setAuth({
       ...auth,
@@ -40,11 +42,26 @@ function Header() {
                   Home
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink to="/category" className="nav-link">
-                  Category
-                </NavLink>
+              <li className="nav-item dropdown">
+                <Link
+                  className="nav-link dropdown-toggle"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Categories
+                </Link>
+                <ul className="dropdown-menu">
+                  {categories?.map((c) => (
+                    <li key={c._id}>
+                      <Link to={`/category/${c._id}/${c.slug}`} className="dropdown-item">
+                        {c.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </li>
+
               {!auth.user ? (
                 <>
                   <li className="nav-item">

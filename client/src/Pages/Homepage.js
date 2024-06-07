@@ -5,7 +5,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import ProductCardHome from "../Components/Layouts/ProductsCardHome";
 import { Link } from "react-router-dom";
-import "../styles/Homepage.css";
+import styles from "../styles/Homepage.module.css"; // Import the CSS module
 
 const Homepage = () => {
   const [alt1, setAlt1] = useState();
@@ -93,39 +93,49 @@ const Homepage = () => {
       />
 
       <div className="mt-3 w-100 category-container">
-        <h2 className="text-center main-heading">Shop by Category</h2>
-        <div className="main-categoryDiv">
+        <h2 className={`text-center ${styles.mainHeading}`}>
+          Shop by Category
+        </h2>
+        <div className={styles.mainCategoryDiv}>
           {category.map((c) => (
-            <div className="categoryDiv">
-              <Link to={`/category/${c._id}/${c.slug}`} className="homepage-link">
-              <img
-                src={`${process.env.REACT_APP_API}/api/v1/category/get-category-image/${c._id}`}
-                alt={c.name}
-              />
-              <p className="text-center category-name">{c.name}</p>
+            <div className={styles.categoryDiv} key={c._id}>
+              <Link
+                to={`/category/${c._id}/${c.slug}`}
+                className={styles.homepageLink}
+              >
+                <img
+                  src={`${process.env.REACT_APP_API}/api/v1/category/get-category-image/${c._id}`}
+                  alt={c.name}
+                />
+                <p className={`text-center ${styles.categoryName}`}>{c.name}</p>
               </Link>
             </div>
-            
           ))}
         </div>
       </div>
 
       <div className="mt-3 w-100 product-container">
-        <h2 className="text-center main-heading">Our New Products</h2>
-        <div className="productDiv">
+        <h2 className={`text-center ${styles.mainHeading}`}>
+          Our New Products
+        </h2>
+        <div className={styles.productDiv}>
           {products ? (
             products.map((p) => (
-              <Link to={`/product/${p._id}/${p.slug}`} className="homepage-link">
-              <ProductCardHome
-                id={p._id}
-                image={`${process.env.REACT_APP_API}/api/v1/product/product-image/${p._id}`}
-                alt={p.alt}
-                title={p.name}
-                name={p.name}
-                price={`Rs.${p.price}/-`}
-                btn1={"More Detail"}
-                btn2={"Add to Cart"}
-              />
+              <Link
+                to={`/product/${p._id}/${p.slug}`}
+                className={styles.homepageLink}
+                key={p._id}
+              >
+                <ProductCardHome
+                  id={p._id}
+                  image={`${process.env.REACT_APP_API}/api/v1/product/product-image/${p._id}`}
+                  alt={p.alt}
+                  title={p.name}
+                  name={p.name}
+                  price={`Rs.${p.price}/-`}
+                  btn1={"More Detail"}
+                  btn2={"Add to Cart"}
+                />
               </Link>
             ))
           ) : (
@@ -134,16 +144,16 @@ const Homepage = () => {
         </div>
       </div>
 
-      <div className="mt-3 w-100 about-us-container">
-        <h2 className="text-center main-heading">About Us</h2>
-        <div className="about-us">
+      <div className={`mt-3 w-100 ${styles.locateUsContainer}`}>
+        <h2 className={`text-center ${styles.mainHeading}`}>About Us</h2>
+        <div className={styles.aboutUs}>
           <img
             src="/images/about.jpeg"
             alt="About Us"
-            className="about-us-image"
+            className={styles.aboutUsImage}
           />
 
-          <p className="about-us-paragraph">
+          <p className={styles.aboutUsParagraph}>
             We Are The Manufacturer Of Mustard Oil, Spices, And Pickles, Which
             Are Being Packed And Sold By The Brand Name DiZa With The Tagline
             “Eat Pure Enjoy Healthy Life”. We Believe That Everyone Should
@@ -155,10 +165,10 @@ const Homepage = () => {
         </div>
       </div>
 
-      <div className="mt-3 w-100 locate-us-container">
-        <h2 className="text-center main-heading">Locate Us</h2>
-        <div className="locate-us">
-          <div className="locate-us-map">
+      <div className={`mt-3 w-100 ${styles.locateUsContainer}`}>
+        <h2 className={`text-center ${styles.mainHeading}`}>Locate Us</h2>
+        <div className={styles.locateUs}>
+          <div className={styles.locateUsMap}>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3509.2288450691512!2d77.28702687510868!3d28.412350875785698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cdd93eeb44873%3A0xd2ebeed0bfba978d!2sShri%20Balaji%20Agro!5e0!3m2!1sen!2sin!4v1715605721008!5m2!1sen!2sin"
               width={400}
@@ -168,11 +178,11 @@ const Homepage = () => {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title="locate us"
-              className="iframe-map"
+              className={styles.iframeMap}
             />
           </div>
-          <div className="locate-us-text">
-            <p className="locate-us-text-paragraph">
+          <div className={styles.locateUsText}>
+            <p className={styles.locateUsTextParagraph}>
               <u>
                 <b>Address:</b>
               </u>{" "}

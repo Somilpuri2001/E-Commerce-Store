@@ -6,11 +6,11 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import Link from "@mui/material/Link";
-import "../../styles/Homepage.css"
+import styles from "../../styles/Homepage.module.css"
 
 const ProductCardHome = (props) => {
   return (
-    <Card sx={{ width: 240 }} key={props.id} className="productCardHome">
+    <Card sx={{ width: 240 }} key={props.id} className={styles.productCardHome}>
       <CardActionArea>
         <CardMedia
           sx={{ height: 240 }}
@@ -46,8 +46,8 @@ const ProductCardHome = (props) => {
           >
             {props.link2}
           </Link>
-          <button type="button" class="btn btn-primary btn-text">{props.btn1}</button>
-          <button type="button" class="btn btn-secondary btn-text">{props.btn2}</button>
+          <button type="button" className={`btn btn-primary ${styles.btnText}`}>{props.btn1}</button>
+          <button type="button" className={`btn btn-secondary ${styles.btnText}`}>{props.btn2}</button>
         </CardActions>
       </CardActionArea>
     </Card>
