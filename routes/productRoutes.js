@@ -13,6 +13,7 @@ const {
   productFilterController,
   productPerPageController,
   getLatestProducts,
+  getSimilarProductController,
 } = require("../controllers/productController");
 
 const {
@@ -70,6 +71,6 @@ router.get('/get-latest-products',getLatestProducts)
 
 //get similar products
 
-router.get('/similar-products',getSimilarProductController)
+router.get('/similar-products/:pid/:cid',getSimilarProductController)
 
 module.exports = router;
