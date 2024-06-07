@@ -7,7 +7,7 @@ import { useCart } from "../../context/cart";
 
 function Header() {
   const [auth, setAuth] = useAuth();
-  const [cart,setCart] = useCart([]);
+  const [cart] = useCart();
   const categories = useCategory();
   const handleLogout = () => {
     setAuth({
@@ -18,8 +18,6 @@ function Header() {
     localStorage.removeItem("auth");
   };
 
-  console.log(cart)
-  console.log(cart?.length)
 
   return (
     <>
@@ -130,6 +128,9 @@ function Header() {
               <li className="nav-item">
                 <NavLink to="/cart" className="nav-link">
                   Cart {cart?.length}
+
+                  {console.log(cart)}
+                  {console.log(cart.length)}
                 </NavLink>
               </li>
             </ul>
@@ -140,4 +141,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default React.memo(Header);

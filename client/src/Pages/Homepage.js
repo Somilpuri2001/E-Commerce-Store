@@ -138,7 +138,7 @@ const Homepage = () => {
                   btn1={"More Detail"}
                   btn2={"Add to Cart"}
                   onclick2={() => {
-                    setCart(...cart, p);
+                    setCart([...cart, p]);
                     toast.success("Product Added To Cart");
                   }}
                 />
