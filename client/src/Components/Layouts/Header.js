@@ -2,9 +2,13 @@ import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { useAuth } from "../../context/auth";
+import useCategory from "../../hooks/useCategory"
+import { useCart } from "../../context/cart";
 
 function Header() {
   const [auth, setAuth] = useAuth();
+  const [cart] = useCart();
+  const categories = useCategory();
   const handleLogout = () => {
     setAuth({
       ...auth,
@@ -13,6 +17,7 @@ function Header() {
     });
     localStorage.removeItem("auth");
   };
+
 
   return (
     <>
@@ -40,11 +45,26 @@ function Header() {
                   Home
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink to="/category" className="nav-link">
-                  Category
-                </NavLink>
+              <li className="nav-item dropdown">
+                <Link
+                  className="nav-link dropdown-toggle"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Categories
+                </Link>
+                <ul className="dropdown-menu">
+                  {categories?.map((c) => (
+                    <li key={c._id}>
+                      <Link to={`/category/${c._id}/${c.slug}`} className="dropdown-item">
+                        {c.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </li>
+
               {!auth.user ? (
                 <>
                   <li className="nav-item">
@@ -61,7 +81,7 @@ function Header() {
               ) : (
                 <>
                   <li className="nav-item dropdown">
-                    <NavLink
+                    <Link
                       to=""
                       className="nav-link dropdown-toggle"
                       role="button"
@@ -69,7 +89,7 @@ function Header() {
                       aria-expanded="false"
                     >
                       My Account
-                    </NavLink>
+                    </Link>
                     <ul className="dropdown-menu">
                       <li
                         className="dropdown-item"
@@ -107,7 +127,10 @@ function Header() {
               )}
               <li className="nav-item">
                 <NavLink to="/cart" className="nav-link">
-                  Cart(0)
+                  Cart {cart?.length}
+
+                  {console.log(cart)}
+                  {console.log(cart.length)}
                 </NavLink>
               </li>
             </ul>
@@ -118,4 +141,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default React.memo(Header);

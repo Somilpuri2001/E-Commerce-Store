@@ -24,6 +24,7 @@ import EditProduct from "./Pages/Admin/EditProduct";
 import HomepageBanner from "./Pages/Admin/HomepageBanner";
 import CategoryPage from "./Pages/CategoryPage";
 import SingleProductPage from "./Pages/SingleProductPage";
+import CartPage from "./Pages/CartPage";
 
 
 function App() {
@@ -39,7 +40,9 @@ function App() {
         <Route path="/resetpassword/:id/:token" element={<Resetpassword />} />
         <Route path="/forgot-password" element={<Forgotpassword />} />
         <Route path="/category/:id/:slug" element={<CategoryPage/>} />
-        <Route path="/product/:id/:slug" element={<SingleProductPage/>} />
+        <Route path="/product/:pid/:slug" element={<SingleProductPage/>} />
+        <Route path="/cart" element={<CartPage/>} />
+
 
         <Route path="/dashboard" element={<PrivateRoute />}>
           <Route path="user" element={<Dashboard />} />

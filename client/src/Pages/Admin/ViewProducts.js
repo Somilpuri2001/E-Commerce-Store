@@ -3,7 +3,7 @@ import AdminMenu from "../../Components/Layouts/AdminMenu";
 import Layout from "../../Components/Layouts/Layout";
 import { toast } from "react-toastify";
 import axios from "axios";
-import "../../styles/admin-edit-category.css";
+import styles from "../../styles/admin-edit-category.module.css";
 import ProductCard from "../../Components/Layouts/ProductCard";
 
 
@@ -61,8 +61,8 @@ const ViewProducts = () => {
               ))
             ) : (
               <>
-                <div className="no-products">
-                  <h1 className="heading">No Products Found</h1>
+                <div className={styles.noProduct}>
+                  <h1 className={styles.heading}>No Products Found</h1>
                 </div>
               </>
             )}

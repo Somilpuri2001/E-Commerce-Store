@@ -1,14 +1,18 @@
-.heading-div{
+.headingDiv{
     padding-left: 30px;
 }
 
-.product-div{
+.homepageLink {
+    text-decoration: none;
+  }
+
+.productDiv{
     display: flex;
     flex-wrap: wrap;
 }
 
 @media (max-width:768px) {
-    .product-div{
+    .productDiv{
         align-items: center;
         justify-content: center;
     }

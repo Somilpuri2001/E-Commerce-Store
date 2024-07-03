@@ -354,9 +354,34 @@ const getLatestProducts = async (req, res) => {
   }
 };
 
-const getSimilarProductController = async () => {
-  
-}
+const getSimilarProductController = async (req, res) => {
+  try {
+    const { pid, cid } = req.params;
+    const products = await productModel
+      .find({
+        category: cid,
+        _id: { $ne: pid },
+      })
+      .select("-image")
+      .limit(4)
+      .populate({ path: "category", select: "-image" });
+
+    res.status(200).send({
+      success: true,
+      message: "Products fetched",
+      products,
+    });
+  } catch (error) {
+    console.log(
+      `Error in similar product controller: Error Message:-> ${error}`
+    );
+    res.status(400).send({
+      sucess: false,
+      message: "Error while getting related products",
+      error,
+    });
+  }
+};
 
 module.exports = {
   createProductController: createProductController,
@@ -369,4 +394,5 @@ module.exports = {
   productFilterController: productFilterController,
   productPerPageController: productPerPageController,
   getLatestProducts: getLatestProducts,
+  getSimilarProductController: getSimilarProductController,
 };

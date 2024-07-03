@@ -3,7 +3,6 @@ import AdminMenu from "../../Components/Layouts/AdminMenu";
 import Layout from "../../Components/Layouts/Layout";
 import axios from "axios";
 import { toast } from "react-toastify";
-import "../../styles/create-product.css";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -15,6 +14,7 @@ import { Modal } from "antd";
 
 import "antd/dist/reset.css";
 import MultiUtilForm from "../../Components/Form/MultiUtilForm";
+import styles from "../../styles/create-product.module.css"; // Import the CSS module
 
 const EditProduct = () => {
   const params = useParams();
@@ -187,8 +187,8 @@ const EditProduct = () => {
           <div className="col-md-9">
             <h1>Update Product</h1>
             <div className="m-1 w-75">
-              <label className="image-uploader">
-                <div className="image-uploader-div">
+              <label className={styles.imageUploader}>
+                <div className={styles.imageUploaderDiv}>
                   {image ? (
                     <>
                       {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
@@ -198,7 +198,7 @@ const EditProduct = () => {
                         height={"200px"}
                         className="img img-responsive mt-3"
                       />
-                      <p className="image-uploader-text">{image.name}</p>
+                      <p className={styles.imageUploaderText}>{image.name}</p>
                       <Button
                         variant="contained"
                         className="mt-3 mb-3"
@@ -210,8 +210,8 @@ const EditProduct = () => {
                     </>
                   ) : (
                     <>
-                      <p className="image-uploader-text">Upload Image</p>
-                      <p className="image-uploader-subtext">
+                      <p className={styles.imageUploaderText}>Upload Image</p>
+                      <p className={styles.imageUploaderSubtext}>
                         Maximum upload 500 x 500 and 5MB
                       </p>
                     </>
@@ -260,12 +260,12 @@ const EditProduct = () => {
                   </MenuItem>
                 ))}
               </Select>
-              <div className="quantity-price-div">
+              <div className={styles.quantityPriceDiv}>
                 <TextField
                   id="outlined-basic"
                   label="Quantity"
                   variant="outlined"
-                  className="mt-3 width-48"
+                  className={`mt-3 ${styles.width48}`}
                   type="number"
                   value={quantity}
                   onChange={(e) => setQuantity(e.target.value)}
@@ -276,7 +276,7 @@ const EditProduct = () => {
                   id="outlined-basic"
                   label="Price"
                   variant="outlined"
-                  className="mt-3 width-48"
+                  className={`mt-3 ${styles.width48}`}
                   type="number"
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
