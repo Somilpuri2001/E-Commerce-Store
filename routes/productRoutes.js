@@ -70,6 +70,6 @@ router.get('/get-latest-products',getLatestProducts)
 
 //get similar products
 
-router.get('/similar-products',getSimilarProductController)
+// router.get('/similar-products',getSimilarProductController)
 
 module.exports = router;
