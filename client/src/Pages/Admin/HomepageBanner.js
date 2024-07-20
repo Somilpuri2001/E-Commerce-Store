@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { TextField } from "@mui/material";
+import styles from '../../styles/Homepage-banner.module.css'
 
 const HomepageBanner = () => {
   const [image1, setImage1] = useState();
@@ -285,8 +286,8 @@ const HomepageBanner = () => {
             <h1> Set Homepage Banner </h1>
             <div className="m-1 w-75">
               <h5>Image 1:</h5>
-              <label className="image-uploader">
-                <div className="image-uploader-div">
+              <label className={styles.imageUploader}>
+                <div className={styles.imageUploaderDiv}>
                   {image1 ? (
                     <>
                       {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
@@ -296,7 +297,7 @@ const HomepageBanner = () => {
                         height={"200px"}
                         className="img img-responsive mt-3"
                       />
-                      <p className="image-uploader-text">{image1.name}</p>
+                      <p className={styles.imageUploaderText}>{image1.name}</p>
                       <Button
                         variant="contained"
                         className="mt-3 mb-3"
@@ -307,7 +308,7 @@ const HomepageBanner = () => {
                     </>
                   ) : (
                     <>
-                      <p className="image-uploader-text">Upload Image</p>
+                      <p className={styles.imageUploaderText}>Upload Image 1</p>
                     </>
                   )}
                   <input
@@ -329,8 +330,8 @@ const HomepageBanner = () => {
                 onChange={(e) => setAlt1(e.target.value)}
               />
               <h5 className="mt-3">Image 2:</h5>
-              <label className="image-uploader">
-                <div className="image-uploader-div">
+              <label className={styles.imageUploader}>
+                <div className={styles.imageUploaderDiv}>
                   {image2 ? (
                     <>
                       {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
@@ -340,7 +341,7 @@ const HomepageBanner = () => {
                         height={"200px"}
                         className="img img-responsive mt-3"
                       />
-                      <p className="image-uploader-text">{image2.name}</p>
+                      <p className={styles.imageUploaderText}>{image2.name}</p>
                       <Button
                         variant="contained"
                         className="mt-3 mb-3"
@@ -351,7 +352,7 @@ const HomepageBanner = () => {
                     </>
                   ) : (
                     <>
-                      <p className="image-uploader-text">Upload Image</p>
+                      <p className={styles.imageUploaderText}>Upload Image</p>
                     </>
                   )}
                   <input
@@ -373,8 +374,8 @@ const HomepageBanner = () => {
                 onChange={(e) => setAlt2(e.target.value)}
               />
               <h5 className="mt-3">Image 3:</h5>
-              <label className="image-uploader">
-                <div className="image-uploader-div">
+              <label className={styles.imageUploader}>
+                <div className={styles.imageUploaderDiv}>
                   {image3 ? (
                     <>
                       {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
@@ -384,7 +385,7 @@ const HomepageBanner = () => {
                         height={"200px"}
                         className="img img-responsive mt-3"
                       />
-                      <p className="image-uploader-text">{image3.name}</p>
+                      <p className={styles.imageUploaderText}>{image3.name}</p>
                       <Button
                         variant="contained"
                         className="mt-3 mb-3"
@@ -395,7 +396,7 @@ const HomepageBanner = () => {
                     </>
                   ) : (
                     <>
-                      <p className="image-uploader-text">Upload Image</p>
+                      <p className={styles.imageUploaderText}>Upload Image</p>
                     </>
                   )}
                   <input
@@ -417,8 +418,8 @@ const HomepageBanner = () => {
                 onChange={(e) => setAlt3(e.target.value)}
               />
               <h5 className="mt-3">Image 4:</h5>
-              <label className="image-uploader">
-                <div className="image-uploader-div">
+              <label className={styles.imageUploader}>
+                <div className={styles.imageUploaderDiv}>
                   {image4 ? (
                     <>
                       {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
@@ -428,7 +429,7 @@ const HomepageBanner = () => {
                         height={"200px"}
                         className="img img-responsive mt-3"
                       />
-                      <p className="image-uploader-text">{image4.name}</p>
+                      <p className={styles.imageUploaderText}>{image4.name}</p>
                       <Button
                         variant="contained"
                         className="mt-3 mb-3"
@@ -439,7 +440,7 @@ const HomepageBanner = () => {
                     </>
                   ) : (
                     <>
-                      <p className="image-uploader-text">Upload Image</p>
+                      <p className={styles.imageUploaderText}>Upload Image</p>
                     </>
                   )}
                   <input
