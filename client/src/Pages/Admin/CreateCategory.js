@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { Button } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import styles from "../../styles/create-category.module.css"
 
 const CreateCategory = () => {
   const [name, setName] = useState([]);
@@ -78,8 +79,8 @@ const CreateCategory = () => {
           <div className="col-md-9">
             <h1>Create Category</h1>
             <div className="m-1 w-75">
-            <label className="image-uploader mb-4">
-                <div className="image-uploader-div">
+            <label className={styles.imageUploader}>
+                <div className={styles.imageUploaderDiv}>
                   {image ? (
                     <>
                       {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
@@ -89,7 +90,7 @@ const CreateCategory = () => {
                         height={"200px"}
                         className="img img-responsive mt-3"
                       />
-                      <p className="image-uploader-text">{image.name}</p>
+                      <p className={styles.imageUploaderText}>{image.name}</p>
                       <Button
                         variant="contained"
                         className="mt-3 mb-3"
@@ -101,8 +102,8 @@ const CreateCategory = () => {
                     </>
                   ) : (
                     <>
-                      <p className="image-uploader-text">Upload Image</p>
-                      <p className="image-uploader-subtext">
+                      <p className={styles.imageUploaderText}>Upload Image</p>
+                      <p className={styles.imageUploaderSubtext}>
                         Maximum upload 500 x 500 and 5MB
                       </p>
                     </>

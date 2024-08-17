@@ -115,7 +115,7 @@ function Header() {
                       <li className="nav-item">
                         <NavLink
                           onClick={handleLogout}
-                          to="/logout"
+                          to="/"
                           className="dropdown-item"
                         >
                           Logout

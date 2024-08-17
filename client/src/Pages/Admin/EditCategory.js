@@ -144,8 +144,8 @@ const EditCategory = () => {
               <h1>Edit Category:{category.name}</h1>
 
               <div className="m-3 w-75">
-                <label className="image-uploader mb-4">
-                  <div className="image-uploader-div">
+                <label className={styles.imageUploader}>
+                  <div className={styles.imageUploaderDiv}>
                     {image ? (
                       <>
                         {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
@@ -155,7 +155,7 @@ const EditCategory = () => {
                           height={"200px"}
                           className="img img-responsive mt-3"
                         />
-                        <p className="image-uploader-text">{image.name}</p>
+                        <p className={styles.imageUploaderText}>{image.name}</p>
                         <Button
                           variant="contained"
                           className="mt-3 mb-3"
@@ -167,8 +167,8 @@ const EditCategory = () => {
                       </>
                     ) : (
                       <>
-                        <p className="image-uploader-text">Upload Image</p>
-                        <p className="image-uploader-subtext">
+                        <p className={styles.imageUploaderText}>Upload Image</p>
+                        <p className={styles.imageUploaderSubtext}>
                           Maximum upload 500 x 500 and 5MB
                         </p>
                       </>
