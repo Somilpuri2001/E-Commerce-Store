@@ -4,9 +4,10 @@ import CarouselComponent from "../Components/CarouselComponent";
 import axios from "axios";
 import { toast } from "react-toastify";
 import ProductCardHome from "../Components/Layouts/ProductsCardHome";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import styles from "../styles/Homepage.module.css";
 import { useCart } from "../context/cart";
+
 
 const Homepage = () => {
   const [alt1, setAlt1] = useState();
@@ -16,6 +17,7 @@ const Homepage = () => {
   const [products, setProducts] = useState();
   const [category, setCategory] = useState([]);
   const [cart, setCart] = useCart();
+  const navigate = useNavigate();
 
   const getBannerAlternateText = async () => {
     try {
@@ -136,9 +138,12 @@ const Homepage = () => {
                   name={p.name}
                   price={`Rs.${p.price}/-`}
                   btn1={"More Detail"}
+                  onclick1={()=>{
+                    navigate(`/product/${p._id}/${p.slug}`);
+                  }}
                   btn2={"Add to Cart"}
                   onclick2={() => {
-                    setCart([...cart, p]);
+                    setCart([...cart, {p}]);
                     toast.success("Product Added To Cart");
                   }}
                 />

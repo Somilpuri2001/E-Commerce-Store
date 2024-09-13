@@ -1,0 +1,18 @@
+.card{
+    height:150px;
+    background-color: #FAF9F6;
+    border-radius: 20px 20px 20px 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    display: flex;
+}
+.productImage{
+    height: 100px;
+    width: 100px;
+    margin: 25px 0px 10px 25px;
+    border-radius: 20px 20px 20px 20px;
+}
+
+.productNameDiv{
+    margin-left: 20px;
+    margin-top: 40px;
+}

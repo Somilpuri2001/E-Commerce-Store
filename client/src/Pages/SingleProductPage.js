@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import styles from "../styles/Product-page.module.css";
 import ProductCardHome from "../Components/Layouts/ProductsCardHome";
+import { useCart } from "../context/cart";
 
 const SingleProductPage = () => {
   const [product, setProduct] = useState(null);
@@ -12,9 +13,11 @@ const SingleProductPage = () => {
   const [disableDec, setDisableDec] = useState(false);
   const [disableInc, setDisableInc] = useState(false);
   const [relatedProducts, setRealatedProducts] = useState([]);
+  const [cart, setCart] = useCart();
 
   const { pid } = useParams();
   const { slug } = useParams();
+
 
   const getProduct = async () => {
     try {
@@ -103,7 +106,9 @@ const SingleProductPage = () => {
                     -
                   </button>
                 </div>
-                <button className={styles.addToCart}>Add To Cart</button>
+                <button className={styles.addToCart} onClick={() => { 
+                  setCart([...cart, { product: product, orderQuantity: value }]); 
+                  toast.success("Product Added to Cart"); }}>Add To Cart</button>
               </div>
             </div>
           </>

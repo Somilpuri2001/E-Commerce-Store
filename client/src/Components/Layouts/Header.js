@@ -4,6 +4,8 @@ import { MdOutlineShoppingBag } from "react-icons/md";
 import { useAuth } from "../../context/auth";
 import useCategory from "../../hooks/useCategory"
 import { useCart } from "../../context/cart";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Badge from '@mui/material/Badge';
 
 function Header() {
   const [auth, setAuth] = useAuth();
@@ -99,9 +101,8 @@ function Header() {
                       </li>
                       <li>
                         <NavLink
-                          to={`/dashboard/${
-                            auth?.user?.role === 1 ? "admin" : "user"
-                          }`}
+                          to={`/dashboard/${auth?.user?.role === 1 ? "admin" : "user"
+                            }`}
                           className="dropdown-item"
                         >
                           Dashboard
@@ -127,10 +128,10 @@ function Header() {
               )}
               <li className="nav-item">
                 <NavLink to="/cart" className="nav-link">
-                  Cart {cart?.length}
+                  <Badge badgeContent={cart?.length} color="primary">
+                    <ShoppingCartIcon /> 
+                  </Badge>
 
-                  {console.log(cart)}
-                  {console.log(cart.length)}
                 </NavLink>
               </li>
             </ul>
