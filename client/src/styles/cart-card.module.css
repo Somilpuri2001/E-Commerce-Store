@@ -1,18 +1,78 @@
-.card{
-    height:150px;
-    background-color: #FAF9F6;
-    border-radius: 20px 20px 20px 20px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+.card {
+    height: 130px;
     display: flex;
+    position: relative;
 }
-.productImage{
+
+.productImage {
     height: 100px;
     width: 100px;
     margin: 25px 0px 10px 25px;
     border-radius: 20px 20px 20px 20px;
 }
 
-.productNameDiv{
+.productNameDiv {
     margin-left: 20px;
     margin-top: 40px;
+    height: fit-content;
+}
+
+.qtyDiv{
+    position: absolute;
+    height: fit-content;
+    margin-top: 3%;
+    left: 50%;
+    
+}
+
+.qtyDisplay {
+    width: 60px;
+    text-align: center;
+    padding: 5px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px 4px 4px 4px;
+    height: 52px;
+    box-sizing: border-box;
+}
+
+.btnInc,
+.btnDec {
+    position: relative;
+    top:3px;
+    margin-top: 5px;
+    height: 50px;
+    background-color: transparent;
+    padding: 11px 15px;
+    border: none;
+}
+
+.btnInc:hover,
+.btnDec:hover {
+    border-radius: 4px;
+    background-color: #efeded;
+}
+
+.btnText {
+    font-size: 20px;
+    color: blue;
+}
+
+.btnTextDelete {
+    font-size: 20px;
+    color: rgb(227, 7, 7);
+}
+
+.horizontalRule{
+    border: none;
+    height: 1px;
+    width: 100%;
+    background-color: #000;
+}
+
+.priceDiv{
+    position: absolute;
+    height: fit-content;
+    margin-top: 5%;
+    left: 85%;
 }
